@@ -32,11 +32,10 @@ export default function Header({
       <div className="header-top">
         <div className="brand-logo-area">
           <div className="brand-icon-box">
-            <img src={scheduleIcon} alt="ScheduleFlow Icon" width="40" height="40" style={{ borderRadius: '10px', display: 'block' }} />
+            <img src={scheduleIcon} alt="Schedule Icon" width="40" height="40" style={{ borderRadius: '10px', display: 'block' }} />
           </div>
           <div>
-            <h1 className="brand-title">ScheduleFlow</h1>
-            <p className="brand-subtitle">Weekly Schedule & Project Planner</p>
+            <h1 className="brand-title">Schedule</h1>
           </div>
         </div>
 
