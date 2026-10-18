@@ -7,7 +7,6 @@ import {
   TrashIcon,
 } from './Icons';
 import { PROJECT_COLORS } from '../data/initialData';
-import { toRoman } from '../utils/romanUtils';
 
 export default function WeeklyProjectFocus({
   categories = [],
@@ -314,9 +313,7 @@ export default function WeeklyProjectFocus({
 
                     <div className="focus-card-metrics">
                       <div className="metric-item">
-                        <span className="metric-val">
-                          {proj.completedCount > 0 ? toRoman(proj.completedCount) : '0'}/{toRoman(proj.tasksCount)}
-                        </span>
+                        <span className="metric-val">{proj.completedCount}/{proj.tasksCount}</span>
                         <span className="metric-lbl">Tasks Done</span>
                       </div>
                       <div className="metric-item">
@@ -413,9 +410,7 @@ export default function WeeklyProjectFocus({
                   </div>
                   <div className="focus-card-metrics">
                     <div className="metric-item">
-                      <span className="metric-val">
-                        {proj.completedCount > 0 ? toRoman(proj.completedCount) : '0'}/{toRoman(proj.tasksCount)}
-                      </span>
+                      <span className="metric-val">{proj.completedCount}/{proj.tasksCount}</span>
                       <span className="metric-lbl">Tasks Done</span>
                     </div>
                     <div className="metric-item">

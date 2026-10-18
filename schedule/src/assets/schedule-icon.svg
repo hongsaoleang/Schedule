@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="scheduleBgAsset" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <linearGradient id="scheduleHeaderAsset" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <filter id="cardShadowAsset" x="-10%" y="-10%" width="125%" height="125%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#0f172a" flood-opacity="0.25" />
+    </filter>
+  </defs>
+
+  <!-- App Rounded Tile Background -->
+  <rect width="64" height="64" rx="14" fill="url(#scheduleBgAsset)" />
+
+  <!-- Calendar Body -->
+  <g filter="url(#cardShadowAsset)">
+    <rect x="12" y="16" width="40" height="36" rx="6" fill="#ffffff" />
+    <path d="M12 22 C12 18.686 14.686 16 18 16 L46 16 C49.314 16 52 18.686 52 22 L52 25 L12 25 Z" fill="url(#scheduleHeaderAsset)" />
+    
+    <!-- Binder Rings -->
+    <rect x="20" y="12" width="4" height="7" rx="2" fill="#e0e7ff" stroke="#4338ca" stroke-width="1.2" />
+    <rect x="40" y="12" width="4" height="7" rx="2" fill="#e0e7ff" stroke="#4338ca" stroke-width="1.2" />
+
+    <!-- Schedule Grid Cells -->
+    <rect x="17" y="29" width="5" height="4" rx="1" fill="#cbd5e1" />
+    <rect x="25" y="29" width="5" height="4" rx="1" fill="#cbd5e1" />
+    <rect x="33" y="29" width="5" height="4" rx="1" fill="#cbd5e1" />
+    <rect x="41" y="29" width="5" height="4" rx="1" fill="#cbd5e1" />
+
+    <rect x="17" y="36" width="5" height="4" rx="1" fill="#cbd5e1" />
+    <rect x="25" y="36" width="5" height="4" rx="1" fill="#6366f1" />
+    <rect x="33" y="36" width="5" height="4" rx="1" fill="#10b981" />
+    <rect x="41" y="36" width="5" height="4" rx="1" fill="#cbd5e1" />
+
+    <rect x="17" y="43" width="5" height="4" rx="1" fill="#cbd5e1" />
+    <rect x="25" y="43" width="5" height="4" rx="1" fill="#cbd5e1" />
+    <rect x="33" y="43" width="5" height="4" rx="1" fill="#f59e0b" />
+    <rect x="41" y="43" width="5" height="4" rx="1" fill="#ec4899" />
+  </g>
+
+  <!-- Verified Check / Active Badge -->
+  <circle cx="47" cy="46" r="8" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+  <path d="M43.5 46 L46 48.5 L50.5 43.5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+</svg>

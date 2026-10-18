@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { CloseIcon, CopyIcon } from './Icons';
 import { addWeeksToMonday, formatWeekRange, getDaysOfWeek } from '../utils/dateUtils';
-import { toRoman } from '../utils/romanUtils';
 
 export default function CarryOverModal({
   isOpen,
@@ -118,7 +117,7 @@ export default function CarryOverModal({
           <div className="form-group">
             <div className="task-selection-header">
               <label>
-                Select Tasks to Move ({selectedTaskIds.length > 0 ? toRoman(selectedTaskIds.length) : '0'}/{toRoman(incompleteTasks.length)})
+                Select Tasks to Move ({selectedTaskIds.length}/{incompleteTasks.length})
               </label>
               <div className="selection-quick-links">
                 <button type="button" className="text-btn" onClick={handleSelectAll}>

@@ -6,7 +6,7 @@ import {
   BarChartIcon,
   FolderIcon,
 } from './Icons';
-import { toRoman } from '../utils/romanUtils';
+import scheduleIcon from '../assets/schedule-icon.svg';
 
 export default function Header({
   activeWeekTasks,
@@ -32,7 +32,7 @@ export default function Header({
       <div className="header-top">
         <div className="brand-logo-area">
           <div className="brand-icon-box">
-            <CalendarIcon size={24} />
+            <img src={scheduleIcon} alt="ScheduleFlow Icon" width="40" height="40" style={{ borderRadius: '10px', display: 'block' }} />
           </div>
           <div>
             <h1 className="brand-title">ScheduleFlow</h1>
@@ -96,9 +96,7 @@ export default function Header({
             <BarChartIcon size={18} />
           </div>
           <div className="stat-info">
-            <span className="stat-number">
-              {completedTasks > 0 ? toRoman(completedTasks) : '0'}/{toRoman(totalTasks)}
-            </span>
+            <span className="stat-number">{completedTasks}/{totalTasks}</span>
             <span className="stat-label">Tasks Completed ({completionRate}%)</span>
           </div>
         </div>

@@ -17,7 +17,6 @@ import {
   getMondayOfWeek,
 } from '../utils/dateUtils';
 import { PRIORITIES } from '../data/initialData';
-import { toRoman } from '../utils/romanUtils';
 
 export default function MonthCalendarView({
   projects = [],
@@ -265,7 +264,7 @@ export default function MonthCalendarView({
                     >
                       <span className="chip-dot" style={{ backgroundColor: summary.project.color }} />
                       <span className="chip-name">{summary.project.name}</span>
-                      <span className="chip-count">{toRoman(summary.tasks.length)}</span>
+                      <span className="chip-count">{summary.tasks.length}</span>
                     </div>
                   ))}
                   {projectSummaries.length > 2 && (
@@ -302,7 +301,7 @@ export default function MonthCalendarView({
               {selectedDayDateStr}
             </h3>
             <span className="mobile-agenda-subtitle">
-              {selectedDayProjectSummaries.length} {selectedDayProjectSummaries.length === 1 ? 'project' : 'projects'} • {toRoman(selectedDayTasks.length)} tasks
+              {selectedDayProjectSummaries.length} {selectedDayProjectSummaries.length === 1 ? 'project' : 'projects'} • {selectedDayTasks.length} tasks
             </span>
           </div>
 
@@ -326,7 +325,7 @@ export default function MonthCalendarView({
                 <div className="mobile-agenda-proj-top">
                   <span className="dot" style={{ backgroundColor: s.project.color }} />
                   <strong>{s.project.name}</strong>
-                  <span className="hours">{toRoman(s.tasks.length)} tasks • {s.totalHours}h</span>
+                  <span className="hours">{s.tasks.length} tasks • {s.totalHours}h</span>
                 </div>
                 <div className="mobile-agenda-tasks">
                   {s.tasks.map((task) => (
@@ -363,7 +362,7 @@ export default function MonthCalendarView({
               <div>
                 <h3>Day Project Schedule</h3>
                 <p className="modal-subtitle">
-                  {selectedDayDateStr} • {toRoman(selectedDayTasks.length)} total tasks
+                  {selectedDayDateStr} • {selectedDayTasks.length} total tasks
                 </p>
               </div>
               <button
@@ -392,7 +391,7 @@ export default function MonthCalendarView({
                       }}
                     >
                       <span className="dot" style={{ backgroundColor: s.project.color }} />
-                      <strong>{s.project.name}</strong> ({toRoman(s.tasks.length)} tasks • {s.totalHours}h)
+                      <strong>{s.project.name}</strong> ({s.tasks.length} tasks • {s.totalHours}h)
                     </span>
                   ))}
                   {selectedDayProjectSummaries.length === 0 && (

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { CheckIcon, ClockIcon, PlusIcon, EditIcon, TrashIcon } from './Icons';
 import { PRIORITIES } from '../data/initialData';
-import { toRoman } from '../utils/romanUtils';
 
 export default function WeeklyBoard({
   daysOfWeek,
@@ -41,8 +40,8 @@ export default function WeeklyBoard({
                 <span className="tab-day-short">{day.shortName}</span>
                 <span className="tab-day-num">{day.displayDate.split(' ')[1]}</span>
                 {dayTaskCount > 0 && (
-                  <span className="tab-task-count-roman" title={`${dayTaskCount} tasks`}>
-                    {toRoman(dayTaskCount)}
+                  <span className="tab-task-count-pill" title={`${dayTaskCount} tasks`}>
+                    {dayTaskCount}
                   </span>
                 )}
               </button>
@@ -98,7 +97,7 @@ export default function WeeklyBoard({
                   <div className="day-meta-badges">
                     {dayTasks.length > 0 && (
                       <span className="day-task-count-badge" title={`${dayTasks.length} tasks`}>
-                        {toRoman(dayTasks.length)} {dayTasks.length === 1 ? 'task' : 'tasks'}
+                        {dayTasks.length} {dayTasks.length === 1 ? 'task' : 'tasks'}
                       </span>
                     )}
                     {dayHours > 0 && (
