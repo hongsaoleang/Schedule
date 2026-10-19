@@ -22,8 +22,8 @@ import {
 } from './data/initialData';
 import './App.css';
 
-const LOCAL_STORAGE_CATEGORIES_KEY = 'schedule_categories_v2';
-const LOCAL_STORAGE_PROJECTS_KEY = 'schedule_projects_v2';
+const LOCAL_STORAGE_CATEGORIES_KEY = 'schedule_categories_v3';
+const LOCAL_STORAGE_PROJECTS_KEY = 'schedule_projects_v3';
 const LOCAL_STORAGE_TASKS_KEY = 'schedule_tasks_v3';
 const LOCAL_STORAGE_THEME_KEY = 'schedule_theme_v2';
 
@@ -38,9 +38,10 @@ function App() {
   // Current selected week's Monday
   const [currentMonday, setCurrentMonday] = useState(() => getMondayOfWeek(new Date()));
 
-  // Categories state
+  // Categories state (starts empty if no user input, cleans legacy demo data)
   const [categories, setCategories] = useState(() => {
     try {
+      localStorage.removeItem('schedule_categories_v2');
       const saved = localStorage.getItem(LOCAL_STORAGE_CATEGORIES_KEY);
       if (saved) return JSON.parse(saved);
     } catch (e) {
@@ -49,16 +50,16 @@ function App() {
     return INITIAL_CATEGORIES;
   });
 
-  // Projects state
+  // Projects state (starts empty if no user input, cleans legacy demo data)
   const [projects, setProjects] = useState(() => {
     try {
+      localStorage.removeItem('schedule_projects_v2');
       const saved = localStorage.getItem(LOCAL_STORAGE_PROJECTS_KEY);
       if (saved) {
         const parsed = JSON.parse(saved);
-        // Backwards compatibility check: ensure each project has a categoryId
         return parsed.map((p) => ({
           ...p,
-          categoryId: p.categoryId || (INITIAL_CATEGORIES[0]?.id || ''),
+          categoryId: p.categoryId || '',
         }));
       }
     } catch (e) {
@@ -292,10 +293,16 @@ function App() {
     setCurrentMonday(targetMonday);
   };
 
-  // Reset / Clear all scheduled tasks
+  // Reset / Clear all data
   const handleResetData = () => {
+    localStorage.removeItem(LOCAL_STORAGE_CATEGORIES_KEY);
+    localStorage.removeItem(LOCAL_STORAGE_PROJECTS_KEY);
     localStorage.removeItem(LOCAL_STORAGE_TASKS_KEY);
+    localStorage.removeItem('schedule_categories_v2');
+    localStorage.removeItem('schedule_projects_v2');
     localStorage.removeItem('schedule_tasks_v2');
+    setCategories([]);
+    setProjects([]);
     setTasks([]);
     setSelectedProjectId(null);
   };

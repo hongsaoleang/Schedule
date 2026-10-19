@@ -77,9 +77,9 @@ export default function Header({
           <button
             type="button"
             className="btn btn-subtle text-muted"
-            title="Clear all tasks from the schedule"
+            title="Clear all data and reset schedule"
             onClick={() => {
-              if (confirm('Clear all tasks from the schedule?')) {
+              if (confirm('Clear all schedule data, projects, and categories?')) {
                 onResetData();
               }
             }}

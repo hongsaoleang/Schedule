@@ -15,54 +15,9 @@ export const PRIORITIES = [
   { id: 'low', label: 'Low', color: '#10b981', badgeBg: 'rgba(16, 185, 129, 0.15)', badgeText: '#059669' },
 ];
 
-export const INITIAL_CATEGORIES = [
-  { id: 'cat-1', name: 'Software Development', color: '#6366f1' },
-  { id: 'cat-2', name: 'Marketing & Growth', color: '#f59e0b' },
-  { id: 'cat-3', name: 'DevOps & Infrastructure', color: '#ec4899' },
-];
+export const INITIAL_CATEGORIES = [];
 
-export const INITIAL_PROJECTS = [
-  {
-    id: 'proj-1',
-    categoryId: 'cat-1',
-    name: 'Website Redesign',
-    description: 'Modernize UI/UX, responsive layouts, and Tailwind design system',
-    color: '#6366f1',
-    priority: 'high',
-    status: 'in-progress',
-    targetHours: 18,
-  },
-  {
-    id: 'proj-2',
-    categoryId: 'cat-1',
-    name: 'Customer Portal API',
-    description: 'Authentication endpoints, billing webhook integration, and database migrations',
-    color: '#10b981',
-    priority: 'high',
-    status: 'in-progress',
-    targetHours: 12,
-  },
-  {
-    id: 'proj-3',
-    categoryId: 'cat-2',
-    name: 'Q4 Product Launch',
-    description: 'Marketing assets, landing page copywriting, and email sequences',
-    color: '#f59e0b',
-    priority: 'medium',
-    status: 'planning',
-    targetHours: 8,
-  },
-  {
-    id: 'proj-4',
-    categoryId: 'cat-3',
-    name: 'Infrastructure & CI/CD',
-    description: 'Automate build pipelines, Docker containerization, and AWS monitoring',
-    color: '#ec4899',
-    priority: 'low',
-    status: 'in-progress',
-    targetHours: 6,
-  },
-];
+export const INITIAL_PROJECTS = [];
 
 export function getInitialTasks() {
   return [];

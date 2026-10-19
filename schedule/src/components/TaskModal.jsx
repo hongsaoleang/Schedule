@@ -82,18 +82,21 @@ function TaskModalForm({
 
           <div className="form-row">
             <div className="form-group">
-              <label htmlFor="task-project">Project *</label>
+              <label htmlFor="task-project">{projects.length > 0 ? 'Project *' : 'Project (Optional)'}</label>
               <select
                 id="task-project"
                 value={projectId}
                 onChange={(e) => setProjectId(e.target.value)}
-                required
+                required={projects.length > 0}
               >
                 {projects.map((p) => (
                   <option key={p.id} value={p.id}>
                     {p.name}
                   </option>
                 ))}
+                {projects.length === 0 && (
+                  <option value="">No projects yet (General / Unassigned)</option>
+                )}
               </select>
             </div>
 

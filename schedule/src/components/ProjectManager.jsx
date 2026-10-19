@@ -133,6 +133,22 @@ export default function ProjectManager({
                     </div>
                   );
                 })}
+
+                {projects.length === 0 && (
+                  <div className="empty-category-notice" style={{ gridColumn: '1 / -1', padding: '2rem', textAlign: 'center' }}>
+                    <p style={{ fontWeight: 600, marginBottom: '0.75rem' }}>No projects created yet.</p>
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-sm"
+                      onClick={() => {
+                        onClose();
+                        onOpenNewProject();
+                      }}
+                    >
+                      <PlusIcon size={14} /> Create Your First Project
+                    </button>
+                  </div>
+                )}
               </div>
             </>
           ) : (
@@ -203,6 +219,21 @@ export default function ProjectManager({
                     </div>
                   );
                 })}
+                {categories.length === 0 && (
+                  <div className="empty-category-notice" style={{ gridColumn: '1 / -1', padding: '2rem', textAlign: 'center' }}>
+                    <p style={{ fontWeight: 600, marginBottom: '0.75rem' }}>No categories created yet.</p>
+                    <button
+                      type="button"
+                      className="btn btn-primary btn-sm"
+                      onClick={() => {
+                        onClose();
+                        onOpenNewCategory();
+                      }}
+                    >
+                      <PlusIcon size={14} /> Create Your First Category
+                    </button>
+                  </div>
+                )}
               </div>
             </>
           )}

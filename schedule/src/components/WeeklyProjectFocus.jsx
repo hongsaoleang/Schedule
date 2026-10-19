@@ -110,7 +110,11 @@ export default function WeeklyProjectFocus({
               Input categories, organize your projects, and schedule weekly goals
             </p>
           </div>
-          <span className="badge-count">{projects.length} Projects in {categories.length} Categories</span>
+          <span className="badge-count">
+            {projects.length === 0 && categories.length === 0
+              ? 'No projects yet'
+              : `${projects.length} Projects in ${categories.length} Categories`}
+          </span>
         </div>
 
         <div className="section-header-actions">
@@ -424,17 +428,74 @@ export default function WeeklyProjectFocus({
           </div>
         )}
 
-        {categories.length === 0 && (
-          <div className="empty-category-notice" style={{ padding: '2rem', textAlign: 'center' }}>
-            <p style={{ fontWeight: 600, marginBottom: '0.75rem', fontSize: '0.95rem' }}>
-              No categories created yet. Click below to add your first category.
+        {projects.length === 0 && categories.length === 0 && (
+          <div
+            className="empty-projects-state"
+            style={{
+              padding: '2.5rem 1.5rem',
+              textAlign: 'center',
+              backgroundColor: 'var(--bg-card)',
+              border: '1.5px dashed var(--border-color)',
+              borderRadius: 'var(--radius-md)',
+              margin: '0.75rem 0',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: '0.75rem',
+            }}
+          >
+            <div
+              style={{
+                width: '46px',
+                height: '46px',
+                borderRadius: '50%',
+                backgroundColor: 'var(--bg-secondary)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--text-muted)',
+              }}
+            >
+              <FolderIcon size={24} />
+            </div>
+            <div>
+              <h3 style={{ fontSize: '1.05rem', fontWeight: 600, margin: '0 0 0.35rem 0', color: 'var(--text-main)' }}>
+                No Data in Weekly Projects Focus
+              </h3>
+              <p style={{ fontSize: '0.85rem', color: 'var(--text-muted)', margin: 0, maxWidth: '440px' }}>
+                You have not input any projects yet. Add your projects or categories above to organize your weekly focus and track deliverables.
+              </p>
+            </div>
+            <div style={{ display: 'flex', gap: '0.75rem', marginTop: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+              <button
+                type="button"
+                className="btn btn-primary btn-sm"
+                onClick={() => onOpenNewProjectModal()}
+              >
+                <PlusIcon size={14} /> + Add Project
+              </button>
+              <button
+                type="button"
+                className="btn btn-secondary btn-sm"
+                onClick={onOpenNewCategoryModal}
+              >
+                <PlusIcon size={14} /> + Add Category
+              </button>
+            </div>
+          </div>
+        )}
+
+        {categories.length === 0 && projects.length > 0 && (
+          <div className="empty-category-notice" style={{ padding: '1.5rem', textAlign: 'center' }}>
+            <p style={{ fontWeight: 600, marginBottom: '0.75rem', fontSize: '0.9rem' }}>
+              No categories created yet. You can group your projects by adding categories.
             </p>
             <button
               type="button"
-              className="btn btn-primary btn-sm"
+              className="btn btn-secondary btn-sm"
               onClick={onOpenNewCategoryModal}
             >
-              <PlusIcon size={16} /> + Add Category
+              <PlusIcon size={14} /> + Add Category
             </button>
           </div>
         )}
