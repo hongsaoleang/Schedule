@@ -24,7 +24,7 @@ import './App.css';
 
 const LOCAL_STORAGE_CATEGORIES_KEY = 'schedule_categories_v2';
 const LOCAL_STORAGE_PROJECTS_KEY = 'schedule_projects_v2';
-const LOCAL_STORAGE_TASKS_KEY = 'schedule_tasks_v2';
+const LOCAL_STORAGE_TASKS_KEY = 'schedule_tasks_v3';
 const LOCAL_STORAGE_THEME_KEY = 'schedule_theme_v2';
 
 function App() {
@@ -67,9 +67,10 @@ function App() {
     return INITIAL_PROJECTS;
   });
 
-  // Tasks state
+  // Tasks state (starts empty by default, removes legacy mock tasks)
   const [tasks, setTasks] = useState(() => {
     try {
+      localStorage.removeItem('schedule_tasks_v2');
       const saved = localStorage.getItem(LOCAL_STORAGE_TASKS_KEY);
       if (saved) return JSON.parse(saved);
     } catch (e) {
@@ -291,15 +292,11 @@ function App() {
     setCurrentMonday(targetMonday);
   };
 
-  // Reset data to defaults
+  // Reset / Clear all scheduled tasks
   const handleResetData = () => {
-    localStorage.removeItem(LOCAL_STORAGE_CATEGORIES_KEY);
-    localStorage.removeItem(LOCAL_STORAGE_PROJECTS_KEY);
     localStorage.removeItem(LOCAL_STORAGE_TASKS_KEY);
-    setCategories(INITIAL_CATEGORIES);
-    setProjects(INITIAL_PROJECTS);
-    setTasks(getInitialTasks());
-    setCurrentMonday(getMondayOfWeek(new Date()));
+    localStorage.removeItem('schedule_tasks_v2');
+    setTasks([]);
     setSelectedProjectId(null);
   };
 
